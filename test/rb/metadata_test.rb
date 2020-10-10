@@ -5,14 +5,16 @@ require_relative '../../src/ripper'
 
 class MetadataTest < Minitest::Test
   def test_BEGIN
-    assert_metadata :BEGIN, <<~SOURCE
+    assert_metadata :BEGIN,
+                    <<~SOURCE
       BEGIN {
       }
     SOURCE
   end
 
   def test_END
-    assert_metadata :END, <<~SOURCE
+    assert_metadata :END,
+                    <<~SOURCE
       END {
       }
     SOURCE
@@ -23,7 +25,8 @@ class MetadataTest < Minitest::Test
   end
 
   def test_array_args
-    assert_metadata :array, <<~SOURCE
+    assert_metadata :array,
+                    <<~SOURCE
       [
         foo,
         bar,
@@ -33,7 +36,8 @@ class MetadataTest < Minitest::Test
   end
 
   def test_array_args_add_star
-    assert_metadata :array, <<~SOURCE
+    assert_metadata :array,
+                    <<~SOURCE
       [
         foo,
         *bar,
@@ -43,7 +47,8 @@ class MetadataTest < Minitest::Test
   end
 
   def test_array_qwords
-    assert_metadata :array, <<~SOURCE
+    assert_metadata :array,
+                    <<~SOURCE
       %w[
         foo
         bar
@@ -141,7 +146,8 @@ class MetadataTest < Minitest::Test
   end
 
   def test_begin
-    assert_metadata :begin, <<~SOURCE
+    assert_metadata :begin,
+                    <<~SOURCE
       begin
         begin; end
       end
@@ -193,7 +199,8 @@ class MetadataTest < Minitest::Test
   end
 
   def test_case
-    assert_metadata :case, <<~SOURCE
+    assert_metadata :case,
+                    <<~SOURCE
       case foo
       when bar
         case baz
@@ -204,7 +211,8 @@ class MetadataTest < Minitest::Test
   end
 
   def test_class
-    assert_metadata :class, <<~SOURCE
+    assert_metadata :class,
+                    <<~SOURCE
       class Foo
         class Bar; end
       end
@@ -240,7 +248,8 @@ class MetadataTest < Minitest::Test
   end
 
   def test_def
-    assert_metadata :def, <<~SOURCE
+    assert_metadata :def,
+                    <<~SOURCE
       def foo
         def bar; end
       end
@@ -248,7 +257,8 @@ class MetadataTest < Minitest::Test
   end
 
   def test_defined
-    assert_metadata :defined, <<~SOURCE
+    assert_metadata :defined,
+                    <<~SOURCE
       defined?(
         Foo
       )
@@ -256,7 +266,8 @@ class MetadataTest < Minitest::Test
   end
 
   def test_defs
-    assert_metadata :defs, <<~SOURCE
+    assert_metadata :defs,
+                    <<~SOURCE
       def Object.foo
         def Object.bar; end
       end
@@ -358,7 +369,8 @@ class MetadataTest < Minitest::Test
   end
 
   def test_for
-    assert_metadata :for, <<~SOURCE
+    assert_metadata :for,
+                    <<~SOURCE
       for foo in bar do
         for baz in qux do
         end
@@ -367,7 +379,8 @@ class MetadataTest < Minitest::Test
   end
 
   def test_hash
-    assert_metadata :hash, <<~SOURCE
+    assert_metadata :hash,
+                    <<~SOURCE
       {
         foo: 'bar'
       }
@@ -375,7 +388,8 @@ class MetadataTest < Minitest::Test
   end
 
   def test_if
-    assert_metadata :if, <<~SOURCE
+    assert_metadata :if,
+                    <<~SOURCE
       if foo
         if bar; end
       end
@@ -399,13 +413,15 @@ class MetadataTest < Minitest::Test
   end
 
   def test_lambda
-    assert_metadata :lambda, <<~SOURCE
+    assert_metadata :lambda,
+                    <<~SOURCE
       -> (foo, bar) {
         foo + bar
       }
     SOURCE
 
-    assert_metadata :lambda, <<~SOURCE
+    assert_metadata :lambda,
+                    <<~SOURCE
       lambda do |foo, bar|
         foo + bar
       end
@@ -457,7 +473,8 @@ class MetadataTest < Minitest::Test
   end
 
   def test_module
-    assert_metadata :module, <<~SOURCE
+    assert_metadata :module,
+                    <<~SOURCE
       module Foo
         module Bar; end
       end
@@ -565,7 +582,8 @@ class MetadataTest < Minitest::Test
   end
 
   def test_sclass
-    assert_metadata :sclass, <<~SOURCE
+    assert_metadata :sclass,
+                    <<~SOURCE
       class << Foo
         class << Bar; end
       end
@@ -573,7 +591,8 @@ class MetadataTest < Minitest::Test
   end
 
   def test_string_concat
-    assert_metadata :string_concat, <<~SOURCE
+    assert_metadata :string_concat,
+                    <<~SOURCE
       'foo' \
         'bar'
     SOURCE
@@ -637,7 +656,8 @@ class MetadataTest < Minitest::Test
   end
 
   def test_unless
-    assert_metadata :unless, <<~SOURCE
+    assert_metadata :unless,
+                    <<~SOURCE
       unless foo
         unless bar; end
       end
@@ -649,7 +669,8 @@ class MetadataTest < Minitest::Test
   end
 
   def test_until
-    assert_metadata :until, <<~SOURCE
+    assert_metadata :until,
+                    <<~SOURCE
       until foo
         until bar; end
       end
@@ -661,7 +682,8 @@ class MetadataTest < Minitest::Test
   end
 
   def test_while
-    assert_metadata :while, <<~SOURCE
+    assert_metadata :while,
+                    <<~SOURCE
       while foo
         while bar; end
       end
@@ -713,7 +735,8 @@ class MetadataTest < Minitest::Test
   end
 
   def test_xstring
-    assert_metadata :xstring_literal, <<~SOURCE
+    assert_metadata :xstring_literal,
+                    <<~SOURCE
       `
         foo
         bar

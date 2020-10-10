@@ -4,6 +4,7 @@ const {
   hardline,
   indent,
   literalline,
+  lineSuffix,
   softline,
   join
 } = require("../prettier");
@@ -103,7 +104,10 @@ module.exports = {
       return join(literalline, part.body.split("\n"));
     });
 
-    return concat([beging, literalline, concat(parts), ending]);
+    return concat([
+      beging,
+      lineSuffix(concat([literalline, concat(parts), ending]))
+    ]);
   },
   string: makeList,
   string_concat: (path, opts, print) =>
